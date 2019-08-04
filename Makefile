@@ -1,6 +1,6 @@
 EXE = main
 OBJ = hello.o sum.o
-SRC = hello.c sum.c
+#SRC = hello.c sum.c
 
 EXE:$(OBJ)
 	gcc -o $(EXE) $^
