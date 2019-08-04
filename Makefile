@@ -1,8 +1,11 @@
-s = sum.c
+EXE = main
+OBJ = hello.o sum.o
+SRC = hello.c sum.c
 
-.PHONY: all clean
-all:
-	gcc hello.c $(s)
+EXE:$(OBJ)
+	gcc -o $(EXE) $^
+
+.PHONY:clean
 
 clean:
-	-rm -v a.out
+	-rm -vfr a.out *.o $(EXE)
