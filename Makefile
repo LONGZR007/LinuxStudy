@@ -1,9 +1,9 @@
 EXE = main
-OBJ = hello.o sum.o
-#SRC = hello.c sum.c
+#OBJ = hello.o sum.o
+SRC = hello.c sum.c
 
-EXE:$(OBJ)
-	gcc -o $(EXE) $^
+EXE:$(SRC)
+	arm-linux-gnueabi-gcc -o $(EXE) $^
 
 .PHONY:clean
 
