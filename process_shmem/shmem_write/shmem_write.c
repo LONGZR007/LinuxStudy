@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <stdio.h>
 int main()
 {
 	int shmid;

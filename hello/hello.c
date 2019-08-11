@@ -3,7 +3,11 @@
    
 int main (void)
 {
-   // printf("1+1=%d\n", sum(1,1));
+    int x = 0;
+    int y = 0;
+   // printf("1+1=%d\n", sum(1,1));Please enter the value of x
+   printf("Please enter the value of x and y :\n");
+   scanf("%d %d", &x, &y);
 
-    printf("1+1=%d\n", 2);
+    printf("x+y=%d\n", x+y);
 }
