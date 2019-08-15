@@ -12,7 +12,7 @@
 #include <string.h>
 #include <errno.h>
 
-#define STTY_DEV  "/dev/ttyUSB0"
+#define STTY_DEV  "/dev/ttymxc0"
 #define BUFF_SIZE 512
 extern int errno;
 
@@ -21,6 +21,7 @@ int main()
     int stty_fd, n;
     int i=0;
     char buffer[BUFF_SIZE];
+    char Send[] = "Hello Embed Fire\n";
     struct termios opt;
 
     stty_fd = open(STTY_DEV, O_RDWR);
@@ -67,23 +68,28 @@ int main()
 
     tcflush(stty_fd, TCIOFLUSH);     // 同时刷新收到的数据但是不读，并且刷新写入数据但不传送
 
+	printf("b = %d\n", cfgetospeed(&opt));
+
+    write(stty_fd, Send, sizeof(Send));
+
     while (1)
     {
         n = read(stty_fd, buffer, BUFF_SIZE);
 
         if (n <= 0)
         {
-            perror("read data");
+            perror("read data ");
+            close(stty_fd);
             return 0;
         }
         buffer[n] = '\0';
 
-        printf("Receive %d : %d :%s\n",  i++, n,  buffer);
+        printf("Receive %d : %s\n", n,  buffer);
 
         if (0 == strncmp(buffer, "quit", 4))
         {
-            printf("Program will exit!");
-            //break;
+            printf("Program will exit!\n");
+            break;
         }
     }
     
