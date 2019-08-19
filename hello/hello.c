@@ -1,5 +1,5 @@
 #include <stdio.h>
-//#include "sum.h"
+#include "sum.h"
    
 int main (void)
 {
@@ -9,5 +9,6 @@ int main (void)
    printf("Please enter the value of x and y :\n");
    scanf("%d %d", &x, &y);
 
-    printf("x+y=%d\n", x+y);
+    printf("x+y=%d\n", sum(x, y));
+	return 0;
 }
